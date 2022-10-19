@@ -5,22 +5,24 @@ import CharacterList from './pages/CharacterList'
 
 class App extends React.Component {
   state = {
-    actualScreen: 'home'
+    actualScreen: 'home',
+    clickedCharacterUrl: '',
+    clickedFilmUrl: '',
   }
 
   goToListPage = () => {
-    this.setState({actualScreen: 'home'})
+    this.setState({actualScreen: 'home', clickedCharacterUrl: ''})
   }
 
-  goToDetailsPage = () => {
-    this.setState({actualScreen: 'details'})
+  goToDetailsPage = (url) => {
+    this.setState({actualScreen: 'details', clickedCharacterUrl: url, clickedFilmUrl: url})
   }
 
   switchScreen = () => {
     if(this.state.actualScreen === 'home') {
       return <CharacterList goToDetailsPage={this.goToDetailsPage}/>
     } else {
-      return <CharacterDetails goToListPage={this.goToListPage}/>
+      return <CharacterDetails goToListPage={this.goToListPage} characterUrl={this.state.clickedCharacterUrl} filmUrl={this.state.clickedFilmUrl}/>
     }
   }
   render() {
