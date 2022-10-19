@@ -1,7 +1,9 @@
 import React from 'react'
-import { Box } from '@chakra-ui/react'
+import { Box, Text, ChakraProvider, Heading } from '@chakra-ui/react'
 import axios from 'axios'
 import { BASE_URL } from "../constants/urls"
+import customTheme from '../theme/Theme'
+import SW from '../assets/Star-wars-logo-new-tall.webp'
 
 class CharacterList extends React.Component {
   state = {
@@ -24,17 +26,39 @@ class CharacterList extends React.Component {
         <>
           <Box 
             key={character.url}
-            onClick={() => this.props.goToDetailsPage(character.url)}>
+            onClick={() => this.props.goToDetailsPage(character.url)}
+            color='#ffe81f'
+            fontSize='22px'
+            cursor={'pointer'}
+            border= '1px' solid 
+            borderColor='gray'
+            w='17rem'
+            _hover={{
+              bg:'gray'
+            }}
+            >
             {character.name}
           </Box>
         </>
         )
     })
     return (
-      <Box
-        >
-        {mappedCharacters}
-      </Box>
+      <ChakraProvider theme={customTheme}>    
+        <Box
+          fontFamily={'mono'}
+          pos="relative"
+          w='100vw'
+          h="100vh"
+          bgImage={SW}
+          py='7rem'
+          px={'5rem'}
+          >
+            <Heading color='whitesmoke' fontWeight={800}>May the Force be with you!</Heading>
+            <Text py='1rem' color='gray' fontSize={'1.5rem'}>Click in the characters and see some details</Text>  
+            {mappedCharacters}
+        </Box>
+        
+      </ChakraProvider>
     )
   }
 }
