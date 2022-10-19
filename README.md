@@ -12,6 +12,7 @@ Proposta do bootcamp Labenu para implementação de um site usando a API de Star
 ▪ Vite + ReactJS
 ▪ JavaScript
 ▪ Axios
+▪ API Rest
 ▪ HTML
 ▪ Git/GitHub
 ▪ Chakra UI
